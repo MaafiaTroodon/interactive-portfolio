@@ -7,16 +7,18 @@ const Projects = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("https://fancy-lollipop-fcb73b.netlify.app/.netlify/functions/api")
+        axios.get("/.netlify/functions/api")  
             .then(response => {
                 setProjects(response.data);
                 setLoading(false);
             })
             .catch(error => {
+                console.error("Error fetching projects:", error);
                 setError("Error fetching projects");
                 setLoading(false);
             });
     }, []);
+    
 
     if (loading) return <p>Loading projects...</p>;
     if (error) return <p>{error}</p>;
