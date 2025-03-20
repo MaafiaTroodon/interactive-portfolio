@@ -3,6 +3,8 @@ import Weather from "./components/Weather";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import "./App.css";
+
 
 const App = () => {
     return (
