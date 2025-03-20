@@ -1,9 +1,9 @@
 [build]
   command = "npm install && npm run build"
-  publish = "frontend/build"
-  functions = "backend/functions"  # ✅ Ensure correct function path
+  publish = "frontend/build"  # ✅ This tells Netlify to serve the React frontend
+  functions = "backend/functions"  # ✅ This tells Netlify where functions are located
 
 [dev]
   command = "npm start"
   port = 3000
-  functionsPort = 8888
+  functionsPort = 9999  # ✅ This is where API functions should run
