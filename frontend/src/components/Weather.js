@@ -8,7 +8,7 @@ const Weather = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("/.netlify/functions/weather")  // ✅ Corrected API Path
+        axios.get("/.netlify/functions/Weather")  // ✅ Corrected API Path
             .then(response => {
                 setWeather(response.data);
                 setLoading(false);

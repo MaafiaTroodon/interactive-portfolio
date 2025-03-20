@@ -35,6 +35,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-app.use("/.netlify/functions/weather", router);
+app.use("/.netlify/functions/Weather", router);
 
 module.exports.handler = serverless(app);
