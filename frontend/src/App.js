@@ -1,16 +1,17 @@
 import React from "react";
+import Weather from "./components/Weather";
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import Projects from "./components/Projects";
 
-import Projects from "./components/Projects";  // Import the new Projects component
-
-
-import "./App.css"; // Keep the CSS import for styling
-
-function App() {
+const App = () => {
     return (
-        <div className="container text-center mt-4">
-            <Projects />  {/* Display projects */}
+        <div className="container">
+            <ThemeSwitcher />
+            <h1>My Portfolio</h1>
+            <Weather />
+            <Projects />
         </div>
     );
-}
+};
 
 export default App;

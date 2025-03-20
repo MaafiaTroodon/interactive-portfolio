@@ -1,9 +1,9 @@
 [build]
-  command = "npm install && npm run build"  
-  publish = "frontend/build"  
-  functions = "backend/functions"  # ✅ This should match the `functions` folder
+  command = "npm install && npm run build"
+  publish = "frontend/build"
+  functions = "backend/functions"
 
-[dev]
-  command = "npm start"
-  port = 3000
-  functionsPort = 9999
+[[redirects]]
+  from = "/api/weather"
+  to = "/.netlify/functions/weather"
+  status = 200

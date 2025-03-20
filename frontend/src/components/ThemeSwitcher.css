@@ -1,0 +1,43 @@
+/* ThemeSwitcher.css */
+
+/* Light Mode */
+body.light {
+    background-color: #ffffff;
+    color: #333;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+body.dark {
+    background-color: #121212;
+    color: #f5f5f5;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Button Variant */
+body.dark button {
+    background-color: #ff9800;
+    color: #000;
+}
+
+body.dark button:hover {
+    background-color: #e68a00;
+}
