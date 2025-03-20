@@ -1,17 +1,25 @@
-import React from "react";
-import ThemeSwitcher from "./components/ThemeSwitcher.js";
-import SkillsList from "./components/SkillsList.js";
-import Projects from "./components/Projects.js";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-    return (
-        <div className="container text-center mt-4">
-            <h1>My Interactive Portfolio</h1>
-            <ThemeSwitcher />
-            <SkillsList />
-            <Projects />
-        </div>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
