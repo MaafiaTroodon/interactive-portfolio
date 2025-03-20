@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,13 +8,13 @@ const Weather = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("/api/weather")
+        axios.get("/.netlify/functions/weather")  // ✅ Corrected API Path
             .then(response => {
                 setWeather(response.data);
                 setLoading(false);
             })
             .catch(error => {
-                console.error("Error fetching weather:", error);
+                console.error("Error fetching weather:", error.response ? error.response.data : error);
                 setError("Error fetching weather");
                 setLoading(false);
             });

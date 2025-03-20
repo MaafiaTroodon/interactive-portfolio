@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../../.env" }); // Ensure correct path
+require("dotenv").config(); // Load .env file
 
 const express = require("express");
 const serverless = require("serverless-http");
@@ -11,16 +11,14 @@ app.use(express.json());
 
 const router = express.Router();
 
-const API_KEY = process.env.OPENWEATHER_API_KEY;
-const CITY = "Halifax";
+const API_KEY = process.env.OPENWEATHER_API_KEY; // ✅ Fetch API Key from Netlify
+const CITY = "Halifax"; // ✅ Change this dynamically if needed
 
 router.get("/", async (req, res) => {
     try {
-        if (!API_KEY) {
-            throw new Error("Missing API Key");
-        }
-
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`;
+        console.log("Fetching weather from:", url); // ✅ Debugging
+
         const response = await axios.get(url);
 
         const weatherData = {
@@ -32,7 +30,7 @@ router.get("/", async (req, res) => {
 
         res.json(weatherData);
     } catch (error) {
-        console.error("Error fetching weather data:", error.message);
+        console.error("Error fetching weather data:", error.response ? error.response.data : error);
         res.status(500).json({ error: "Failed to fetch weather data" });
     }
 });
