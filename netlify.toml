@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build"
-  publish = "build"
-  functions = "backend"
+  command = "npm install && npm run build"  # ✅ Install dependencies & build
+  publish = "build"  # ✅ Netlify serves frontend from here
+  functions = "backend"  # ✅ Netlify functions are inside `backend/`
 
 [dev]
   command = "npm start"

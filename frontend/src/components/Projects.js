@@ -7,7 +7,7 @@ const Projects = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("https://fancy-lollipop-fcb73b.netlify.app/.netlify/functions/api/projects")
+        axios.get("https://fancy-lollipop-fcb73b.netlify.app/.netlify/functions/api")
             .then(response => {
                 setProjects(response.data);
                 setLoading(false);
