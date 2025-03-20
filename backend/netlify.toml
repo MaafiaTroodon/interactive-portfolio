@@ -7,3 +7,10 @@
   from = "/api/weather"
   to = "/.netlify/functions/weather"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/projects"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
