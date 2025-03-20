@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 
 const Projects = () => {
@@ -6,17 +6,26 @@ const Projects = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Memoize API_BASE_URL to prevent unnecessary re-renders
+    const API_BASE_URL = useMemo(() => 
+        process.env.NODE_ENV === "development"
+            ? "http://localhost:8888/.netlify/functions/api"
+            : "https://fancy-lollipop-fcb73b.netlify.app/.netlify/functions/api", 
+        []
+    );
+
     useEffect(() => {
-        axios.get("https://fancy-lollipop-fcb73b.netlify.app/.netlify/functions/api/projects")
+        axios.get(`${API_BASE_URL}/projects`)
             .then(response => {
                 setProjects(response.data);
                 setLoading(false);
             })
             .catch(error => {
+                console.error("Error fetching projects:", error);
                 setError("Error fetching projects");
                 setLoading(false);
             });
-    }, []);
+    }, [API_BASE_URL]); // ✅ Now API_BASE_URL is included in dependencies
 
     if (loading) return <p>Loading projects...</p>;
     if (error) return <p>{error}</p>;
