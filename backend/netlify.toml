@@ -1,7 +1,9 @@
 [build]
-  functions = "backend/functions"
+  command = "npm install && npm run build"  
+  publish = "frontend/build"  
+  functions = "backend/functions"  # ✅ This should match the `functions` folder
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
+[dev]
+  command = "npm start"
+  port = 3000
+  functionsPort = 9999

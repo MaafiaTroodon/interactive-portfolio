@@ -1,9 +1,9 @@
 [build]
   command = "npm install && npm run build"
-  publish = "frontend/build"  # ✅ Change this if your frontend is in a different folder
-  functions = "backend"  # ✅ API functions in "backend" folder
+  publish = "frontend/build"
+  functions = "backend/functions"  # ✅ Ensure correct function path
 
 [dev]
   command = "npm start"
   port = 3000
-  functionsPort = 9999
+  functionsPort = 8888
