@@ -14,8 +14,6 @@ router.get("/projects", (req, res) => {
     ]);
 });
 
-// IMPORTANT: Netlify automatically prefixes functions with "/.netlify/functions"
 app.use("/.netlify/functions/api", router);
 
-// Export handler for Netlify
 module.exports.handler = serverless(app);

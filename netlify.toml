@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+  functions = "backend"
+
+[dev]
+  command = "npm start"
+  port = 3000
+  functionsPort = 9999
