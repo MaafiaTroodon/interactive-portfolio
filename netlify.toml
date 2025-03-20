@@ -11,6 +11,6 @@
 
 [[redirects]]
   from = "/api/projects"
-  to = "/.netlify/functions/api"
+  to = "/.netlify/functions/api/projects"
   status = 200
   force = true

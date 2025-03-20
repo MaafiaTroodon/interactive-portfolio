@@ -7,8 +7,9 @@ const Projects = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get("/.netlify/functions/api/projects")  // ✅ Corrected API path
+        axios.get("/.netlify/functions/api/projects")
             .then(response => {
+                console.log("Projects API Response:", response.data);  // ✅ Debug Log
                 setProjects(response.data);
                 setLoading(false);
             })
@@ -18,6 +19,7 @@ const Projects = () => {
                 setLoading(false);
             });
     }, []);
+    
     
 
     if (loading) return <p>Loading projects...</p>;

@@ -1,13 +1,16 @@
-/* Weather.css */
-
 .weather-container {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background-color: white;
+    border-radius: 10px;
     padding: 15px;
-    margin: 20px 0;
     text-align: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+body.dark .weather-container {
+    background-color: #1e1e1e;
+    color: white;
 }
 
 .weather-container h3 {
