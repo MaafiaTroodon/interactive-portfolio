@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+/* Light Theme */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Theme */
+body.dark {
+  background-color: #222;
+  color: white;
+}
+
+/* Skills Section */
+.skills-container {
+  margin: 20px 0;
+}
+
+.skills-container input {
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+      padding: 10px;
+  }
+}
