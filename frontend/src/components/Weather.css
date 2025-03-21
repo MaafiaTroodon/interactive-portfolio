@@ -1,46 +1,116 @@
-/* Weather Container */
+/* Weather Container (Halifax Weather) */
 .weather-container {
-    background: linear-gradient(135deg, #e0f7fa, #80deea);
-    border-radius: 12px;
-    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-    max-width: 400px;
-    margin: auto;
+    transition: background 0.3s ease-in-out;
 }
 
-.weather-container:hover {
-    transform: translateY(-3px);
-}
-
-/* Dark Mode Styling */
 body.dark .weather-container {
-    background: linear-gradient(135deg, #252525, #333);
+    background-color: #1e1e1e;
     color: white;
 }
 
-/* Weather Title */
-.weather-container h3 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
+/* Search Weather Box */
+.search-weather-container {
+    position: relative;
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    text-align: center;
 }
 
-/* Weather Info */
-.weather-container p {
+body.dark .search-weather-container {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.search-box input {
+    width: 80%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+.search-box button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    color: #06283D;
+    background: #dff6ff;
+    border-radius: 50%;
+    font-size: 22px;
+    transition: 0.4s ease;
+}
+
+.search-box button:hover {
+    color: #fff;
+    background: #06283D;
+}
+
+/* Weather Box */
+.weather-box {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.weather-box img {
+    width: 60px;
+}
+
+.weather-box .temperature {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.weather-box .description {
     font-size: 18px;
-    margin: 8px 0;
     font-weight: 500;
+    text-transform: capitalize;
 }
 
-/* Animated Temperature */
-.weather-container p strong {
-    color: #007bff;
-    transition: color 0.3s ease-in-out;
+/* Weather Details */
+.weather-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-body.dark .weather-container p strong {
-    color: #ffcc00;
+.weather-details .humidity, .weather-details .wind {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.weather-details i {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.weather-details span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.weather-details p {
+    font-size: 14px;
+    margin-left: 5px;
 }
