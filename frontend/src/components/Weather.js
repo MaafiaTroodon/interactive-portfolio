@@ -35,7 +35,7 @@ const Weather = () => {
         setSearchWeather(null);
         setSearchError(null);
 
-        const API_KEY = "YOUR_OPENWEATHER_API_KEY"; // ✅ Replace with your OpenWeather API key
+        const API_KEY = "9976584c669590c955b31f1b19c4daf1"; // ✅ Replace with your OpenWeather API key
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
         try {
