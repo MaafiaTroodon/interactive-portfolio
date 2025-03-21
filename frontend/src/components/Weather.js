@@ -14,32 +14,45 @@ const Weather = () => {
     const [searchError, setSearchError] = useState(null);
     const [searchLoading, setSearchLoading] = useState(false);
 
-    // Fetch Halifax weather on page load
+    const API_KEY = "9976584c669590c955b31f1b19c4daf1";
+
+    // Fetch Halifax weather on load
     useEffect(() => {
-        axios.get("/.netlify/functions/Weather")
-            .then(response => {
-                setWeather(response.data);
+        const fetchHalifaxWeather = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.openweathermap.org/data/2.5/weather?q=Halifax&appid=${API_KEY}&units=metric`
+                );
+                setWeather({
+                    city: response.data.name,
+                    temperature: response.data.main.temp,
+                    humidity: response.data.main.humidity,
+                    windSpeed: response.data.wind.speed,
+                    description: response.data.weather[0].description,
+                    icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+                });
+            } catch (err) {
+                console.error("Error fetching Halifax weather:", err);
+                setError("Failed to load Halifax weather.");
+            } finally {
                 setLoading(false);
-            })
-            .catch(error => {
-                console.error("Error fetching Halifax weather:", error.response ? error.response.data : error);
-                setError("Error fetching weather");
-                setLoading(false);
-            });
+            }
+        };
+
+        fetchHalifaxWeather();
     }, []);
 
     // Function to fetch weather for searched city
     const handleSearch = async () => {
         if (!city.trim()) return;
         setSearchLoading(true);
-        setSearchWeather(null);
         setSearchError(null);
-
-        const API_KEY = "9976584c669590c955b31f1b19c4daf1"; // ✅ Replace with your OpenWeather API key
-        const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        setSearchWeather(null);
 
         try {
-            const response = await axios.get(URL);
+            const response = await axios.get(
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+            );
             setSearchWeather({
                 city: response.data.name,
                 temperature: response.data.main.temp,
@@ -48,11 +61,9 @@ const Weather = () => {
                 description: response.data.weather[0].description,
                 icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
             });
-            setSearchError(null);
-        } catch (error) {
-            console.error("Error fetching search weather:", error.response ? error.response.data : error);
-            setSearchWeather(null);
-            setSearchError("City not found!");
+        } catch (err) {
+            console.error("Error fetching city weather:", err);
+            setSearchError("City not found! Please try again.");
         } finally {
             setSearchLoading(false);
         }
@@ -62,11 +73,17 @@ const Weather = () => {
         <div>
             {/* Halifax Weather Box */}
             <div className="weather-container">
-                <h3>Current Weather in {weather?.city}</h3>
-                {loading ? <p>Loading weather...</p> : error ? <p>{error}</p> : (
+                <h3>Current Weather in Halifax</h3>
+                {loading ? (
+                    <p>Loading weather...</p>
+                ) : error ? (
+                    <p className="error">{error}</p>
+                ) : (
                     <>
+                        <img src={weather.icon} alt="weather-icon" />
                         <p><strong>Temperature:</strong> {weather.temperature}°C</p>
                         <p><strong>Humidity:</strong> {weather.humidity}%</p>
+                        <p><strong>Wind Speed:</strong> {weather.windSpeed} Km/h</p>
                         <p><strong>Condition:</strong> {weather.description}</p>
                     </>
                 )}
@@ -82,7 +99,7 @@ const Weather = () => {
                         onChange={(e) => setCity(e.target.value)}
                     />
                     <button onClick={handleSearch}>
-                        🔍
+                        <i className="fa-solid fa-search"></i>
                     </button>
                 </div>
 
