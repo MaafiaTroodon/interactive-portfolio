@@ -1,24 +1,46 @@
+/* Weather Container */
 .weather-container {
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
+    border-radius: 12px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
     margin-bottom: 20px;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+    max-width: 400px;
+    margin: auto;
 }
 
+.weather-container:hover {
+    transform: translateY(-3px);
+}
+
+/* Dark Mode Styling */
 body.dark .weather-container {
-    background-color: #1e1e1e;
+    background: linear-gradient(135deg, #252525, #333);
     color: white;
 }
 
+/* Weather Title */
 .weather-container h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
+/* Weather Info */
 .weather-container p {
     font-size: 18px;
-    margin: 5px 0;
+    margin: 8px 0;
+    font-weight: 500;
+}
+
+/* Animated Temperature */
+.weather-container p strong {
+    color: #007bff;
+    transition: color 0.3s ease-in-out;
+}
+
+body.dark .weather-container p strong {
+    color: #ffcc00;
 }
