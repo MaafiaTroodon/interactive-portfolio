@@ -12,6 +12,7 @@ const Weather = () => {
     const [city, setCity] = useState("");
     const [searchWeather, setSearchWeather] = useState(null);
     const [searchError, setSearchError] = useState(null);
+    const [searchLoading, setSearchLoading] = useState(false);
 
     // Fetch Halifax weather on page load
     useEffect(() => {
@@ -30,6 +31,10 @@ const Weather = () => {
     // Function to fetch weather for searched city
     const handleSearch = async () => {
         if (!city.trim()) return;
+        setSearchLoading(true);
+        setSearchWeather(null);
+        setSearchError(null);
+
         const API_KEY = "YOUR_OPENWEATHER_API_KEY"; // ✅ Replace with your OpenWeather API key
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
@@ -48,6 +53,8 @@ const Weather = () => {
             console.error("Error fetching search weather:", error.response ? error.response.data : error);
             setSearchWeather(null);
             setSearchError("City not found!");
+        } finally {
+            setSearchLoading(false);
         }
     };
 
@@ -75,10 +82,11 @@ const Weather = () => {
                         onChange={(e) => setCity(e.target.value)}
                     />
                     <button onClick={handleSearch}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                        🔍
                     </button>
                 </div>
 
+                {searchLoading && <p>Loading...</p>}
                 {searchError && <p className="error">{searchError}</p>}
 
                 {searchWeather && (
