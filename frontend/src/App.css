@@ -112,13 +112,19 @@ body.dark .card {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
+  text-align: center;
 }
 
+/* Project Card */
 .project-card {
   background: white;
   border-radius: 10px;
-  padding: 15px;
-  width: 280px;
+  padding: 20px;
+  width: 300px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
@@ -128,8 +134,10 @@ body.dark .card {
   transform: translateY(-5px);
 }
 
+/* Project Links */
 .project-card h3 a {
   font-size: 20px;
+  font-weight: bold;
   color: #007bff;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -139,11 +147,22 @@ body.dark .card {
   color: #0056b3;
 }
 
+/* Project Description */
 .project-card p {
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
+  margin: 10px 0;
 }
 
+/* Technologies */
+.project-card .technologies {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Dark Mode Fix */
 body.dark .project-card {
   background: #1e1e1e;
   color: #fff;
@@ -156,4 +175,12 @@ body.dark .project-card h3 a {
 
 body.dark .project-card h3 a:hover {
   color: #e68a00;
+}
+
+body.dark .project-card p {
+  color: #ccc;
+}
+
+body.dark .project-card .technologies {
+  color: #ffb84d;
 }

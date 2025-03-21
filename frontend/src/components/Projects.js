@@ -34,6 +34,7 @@ const Projects = () => {
                         </a>
                     </h3>
                     <p>{project.description}</p>
+                    <p className="technologies">Technologies: {project.technologies.join(", ")}</p>
                 </div>
             ))}
         </div>
