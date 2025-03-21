@@ -9,7 +9,7 @@ const Projects = () => {
     useEffect(() => {
         axios.get("/.netlify/functions/api/projects")
             .then(response => {
-                console.log("Projects API Response:", response.data);  // ✅ Debug Log
+                console.log("Projects API Response:", response.data);  
                 setProjects(response.data);
                 setLoading(false);
             })
@@ -19,21 +19,21 @@ const Projects = () => {
                 setLoading(false);
             });
     }, []);
-    
-    
 
     if (loading) return <p>Loading projects...</p>;
     if (error) return <p>{error}</p>;
 
     return (
-        <div className="container">
+        <div className="projects-container">
             <h3>Projects</h3>
             {projects.map((project) => (
-                <div key={project.id} className="card mb-3">
-                    <div className="card-body">
-                        <h5 className="card-title">{project.name}</h5>
-                        <p className="card-text">{project.description}</p>
-                    </div>
+                <div key={project.id} className="project-card">
+                    <h3>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                            {project.name}
+                        </a>
+                    </h3>
+                    <p>{project.description}</p>
                 </div>
             ))}
         </div>

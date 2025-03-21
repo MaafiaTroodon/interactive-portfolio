@@ -111,11 +111,12 @@ body.dark .card {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  margin-top: 20px;
 }
 
 .project-card {
   background: white;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 15px;
   width: 280px;
   text-align: center;
@@ -127,9 +128,15 @@ body.dark .card {
   transform: translateY(-5px);
 }
 
-.project-card h3 {
+.project-card h3 a {
   font-size: 20px;
   color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-card h3 a:hover {
+  color: #0056b3;
 }
 
 .project-card p {
@@ -137,13 +144,16 @@ body.dark .card {
   color: #555;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .container {
-      padding: 10px;
-  }
+body.dark .project-card {
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.1);
+}
 
-  .skills-container input {
-      width: 100%;
-  }
+body.dark .project-card h3 a {
+  color: #ff9800;
+}
+
+body.dark .project-card h3 a:hover {
+  color: #e68a00;
 }
